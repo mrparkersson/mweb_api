@@ -29,6 +29,11 @@ button:hover {
   font-family: "Roboto Slab", serif;
 }
 
+.provider-names li {
+  align-items: center;
+  margin-left: 90px;
+}
+
 .provider-names-container {
   padding: 10px;
 }
