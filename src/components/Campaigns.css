@@ -1,0 +1,9 @@
+.campaign-providers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 40px;
+  background-color: rgba(0, 28, 48, 0.957);
+  height: 50px;
+}

@@ -1,6 +1,5 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+import "./Campaigns.css";
 const Campaings = ({
   getFreeSetupCodes,
   getFreeSetupRouterData,

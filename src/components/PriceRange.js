@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
+import "./PriceRange.css";
 
 const PriceRange = ({ products }) => {
   const [data1, setData1] = useState([]);
@@ -190,22 +188,17 @@ const PriceRange = ({ products }) => {
           })
         : ""}
       <nav>
-        <ul className="labels-container">
+        <div className="labels-container">
           <div>
-            <FontAwesomeIcon icon={faCheckSquare} onClick={onRangeOneClick} />
-            <li onClick={onRangeOneClick}>{priceRanges[0].label}</li>
+            <button onClick={onRangeOneClick}>{priceRanges[0].label}</button>
           </div>
           <div>
-            {" "}
-            <FontAwesomeIcon icon={faCheckSquare} onClick={onRangeTwoClick} />
-            <li onClick={onRangeTwoClick}>{priceRanges[1].label}</li>
+            <button onClick={onRangeTwoClick}>{priceRanges[1].label}</button>
           </div>
           <div>
-            {" "}
-            <FontAwesomeIcon icon={faCheckSquare} onClick={onRangeThreeClick} />
-            <li onClick={onRangeThreeClick}>{priceRanges[2].label}</li>
+            <button onClick={onRangeThreeClick}>{priceRanges[2].label}</button>
           </div>
-        </ul>
+        </div>
       </nav>
       <div className="range-one-container">
         {showFreeSetupCodes &&
