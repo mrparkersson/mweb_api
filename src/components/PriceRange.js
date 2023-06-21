@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./PriceRange.css";
+import { motion } from "framer-motion";
 
 const PriceRange = ({ products }) => {
   const [data1, setData1] = useState([]);
@@ -158,6 +159,7 @@ const PriceRange = ({ products }) => {
             key={uuidv4()}
             name={provider.name}
             onClick={(e) => handleClick(e.target.name)}
+            className="provider-buttons"
           >
             {provider.name}
           </button>
@@ -175,15 +177,27 @@ const PriceRange = ({ products }) => {
             );
 
             return (
-              <ul key={uuidv4()}>
-                <li>{provider.productCode}</li>
-                <li>{provider.productName}</li>
-                <li>{provider.productRate}</li>
-                <li>{provider.provider}</li>
-                {matchedProvider && (
-                  <img src={matchedProvider.url} alt={matchedProvider.name} />
-                )}
-              </ul>
+              <div className="provider-names-container">
+                <motion.ul
+                  initial={{ scale: 0 }}
+                  animate={{ rotate: 0, scale: 1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 120,
+                    damping: 50,
+                  }}
+                  key={uuidv4()}
+                  className="provider-names"
+                >
+                  <li>{provider.productCode}</li>
+                  <li>{provider.productName}</li>
+                  <li>{provider.productRate}</li>
+                  <li>{provider.provider}</li>
+                  {matchedProvider && (
+                    <img src={matchedProvider.url} alt={matchedProvider.name} />
+                  )}
+                </motion.ul>
+              </div>
             );
           })
         : ""}

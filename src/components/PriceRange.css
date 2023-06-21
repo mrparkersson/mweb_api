@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&display=swap");
+
+.provider-buttons {
+  margin-left: 10px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: #0b2447;
+  color: white;
+  padding: 8px;
+  font-size: 14px;
+  font-family: "Roboto Slab", serif;
+}
+
+button:hover {
+  font-size: 15px;
+  transition: all 0.3s ease-in;
+}
+
+.provider-names {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  margin-top: 5px;
+  align-items: center;
+  border: 2px solid #19376d;
+  border-radius: 20px;
+  font-family: "Roboto Slab", serif;
+}
+
+.provider-names-container {
+  padding: 10px;
+}
+
+.labels-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.labels-container button {
+  border: none;
+  color: white;
+  padding: 8px;
+  font-size: 14px;
+  font-family: "Roboto Slab", serif;
+  background-color: #27374d;
+}
+
+.range-one-container ul {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  margin-top: 5px;
+  align-items: center;
+  border: 2px solid #19376d;
+  border-radius: 20px;
+  font-family: "Roboto Slab", serif;
+}
+
+.range-one-container {
+  padding: 10px;
+  margin-top: 2px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: 10px;
+}

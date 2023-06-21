@@ -1,5 +1,7 @@
 import React from "react";
 import "./Campaigns.css";
+import { motion } from "framer-motion";
+
 const Campaings = ({
   getFreeSetupCodes,
   getFreeSetupRouterData,
@@ -29,7 +31,18 @@ const Campaings = ({
           freeSetupCodes.map((freeSetupCode) => {
             return (
               <ul key={freeSetupCode}>
-                <li>{freeSetupCode}</li>
+                <motion.li
+                  initial={{ scale: 0 }}
+                  animate={{ rotate: 0, scale: 1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 120,
+                    damping: 50,
+                  }}
+                  className="free-setup-code"
+                >
+                  {freeSetupCode}
+                </motion.li>
               </ul>
             );
           })}
@@ -38,7 +51,18 @@ const Campaings = ({
           prepaidCodes.map((prepaidCode) => {
             return (
               <ul key={prepaidCode}>
-                <li>{prepaidCode}</li>
+                <motion.li
+                  initial={{ scale: 0 }}
+                  animate={{ rotate: 0, scale: 1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 120,
+                    damping: 50,
+                  }}
+                  className="free-setup-code"
+                >
+                  {prepaidCode}
+                </motion.li>
               </ul>
             );
           })}

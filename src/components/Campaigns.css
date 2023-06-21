@@ -1,9 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&display=swap");
+
 .campaign-providers {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 40px;
-  background-color: rgba(0, 28, 48, 0.957);
+  background-color: #0c134f;
   height: 50px;
+}
+
+.campaign-providers button {
+  background-color: #5c469c;
+  color: white;
+  border: none;
+  padding: 7px;
+  font-family: "Roboto Slab", serif;
+}
+
+.campaign-providers button:hover {
+  font-size: 15px;
+  transition: all 0.3s ease-in;
+}
+
+.free-setup-code {
+  color: rgb(49, 153, 218);
+  display: flex;
+  flex-direction: row;
+  margin: 16px;
+  border: 1px solid blue;
+  border-radius: 20px;
+  padding: 6px;
 }
