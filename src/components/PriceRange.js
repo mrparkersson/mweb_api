@@ -178,17 +178,7 @@ const PriceRange = ({ products }) => {
 
             return (
               <div className="provider-names-container">
-                <motion.ul
-                  initial={{ scale: 0 }}
-                  animate={{ rotate: 0, scale: 1 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 120,
-                    damping: 50,
-                  }}
-                  key={uuidv4()}
-                  className="provider-names"
-                >
+                <ul key={uuidv4()} className="provider-names">
                   <li>{provider.productCode}</li>
                   <li>{provider.productName}</li>
                   <li>{provider.productRate}</li>
@@ -196,7 +186,7 @@ const PriceRange = ({ products }) => {
                   {matchedProvider && (
                     <img src={matchedProvider.url} alt={matchedProvider.name} />
                   )}
-                </motion.ul>
+                </ul>
               </div>
             );
           })
