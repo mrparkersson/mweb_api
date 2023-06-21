@@ -15,16 +15,14 @@ const Campaings = ({
     <div className="campaign-container">
       <nav className="campaign-providers">
         <div className="free-campain-container">
-          <FontAwesomeIcon icon={faCheckSquare} onClick={getFreeSetupCodes} />
-          <h1 onClick={getFreeSetupCodes}>
+          <button onClick={getFreeSetupCodes}>
             {getFreeSetupRouterData.map((name) => name.name)}
-          </h1>
+          </button>
         </div>
         <div className="prepaid-container">
-          <FontAwesomeIcon icon={faCheckSquare} onClick={getPrepaidCodes} />
-          <h1 onClick={getPrepaidCodes}>
+          <button onClick={getPrepaidCodes}>
             {getPrepaidFibreData.map((name) => name.name)}
-          </h1>
+          </button>
         </div>
       </nav>
       <div className="promocodes-related-campaign">

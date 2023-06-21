@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare } from "@fortawesome/free-solid-svg-icons";
@@ -11,17 +11,105 @@ const PriceRange = ({ products }) => {
   const [showFreeSetupCodes, setShowFreeSetupCodes] = useState(true);
   const [showFreeSetupCodes2, setShowFreeSetupCodes2] = useState(true);
   const [showFreeSetupCodes3, setShowFreeSetupCodes3] = useState(true);
+  const [selectedProvider, setSelectedProvider] = useState(null);
   const priceRanges = [
     { min: 0, max: 699, label: "R0 - R699" },
     { min: 700, max: 999, label: "R700 - R999" },
     { min: 1000, max: 9999, label: "R1000+" },
   ];
 
+  const allProducts = products.flatMap((a) => a);
+  let logoBaseURL = "https://www.mweb.co.za/media/images/providers";
+  const providerInfo = [
+    {
+      code: "centurycity",
+      name: "Century City Connect",
+      url: `${logoBaseURL}/provider-century.png`,
+    },
+    {
+      code: "evotel",
+      name: "Evotel",
+      url: `${logoBaseURL}/provider-evotel.png`,
+    },
+    {
+      code: "octotel",
+      name: "Octotel",
+      url: `${logoBaseURL}/provider-octotel.png`,
+    },
+    {
+      code: "vumatel",
+      name: "Vumatel",
+      url: `${logoBaseURL}/provider-vuma.png`,
+    },
+    {
+      code: "openserve",
+      name: "Openserve",
+      url: `${logoBaseURL}/provider-openserve.png`,
+    },
+    {
+      code: "frogfoot",
+      name: "Frogfoot",
+      url: `${logoBaseURL}/provider-frogfoot.png`,
+    },
+    {
+      code: "mfn",
+      name: "MFN",
+      url: `${logoBaseURL}/provider-metrofibre.png`,
+    },
+    {
+      code: "vodacom",
+      name: "Vodacom",
+      url: `${logoBaseURL}/provider-vodacom.png`,
+    },
+    {
+      code: "linkafrica",
+      name: "Link Africa",
+      url: `${logoBaseURL}/provider-linkafrica.png`,
+    },
+    {
+      code: "linklayer",
+      name: "Link Layer",
+      url: `${logoBaseURL}/provider-link-layer.png`,
+    },
+    {
+      code: "lightstruck",
+      name: "Lightstruck",
+      url: `${logoBaseURL}/provider-lightstruck.png`,
+    },
+    {
+      code: "mitchells",
+      name: "Mitchells Fibre",
+      url: `${logoBaseURL}/provider-mitchells.png`,
+    },
+    {
+      code: "vumareach",
+      name: "Vuma Reach",
+      url: `${logoBaseURL}/provider-vuma.png`,
+    },
+  ];
+
+  const providers = [
+    { name: "Evotel" },
+    { name: "Web Connect" },
+    { name: "Link Africa" },
+    { name: "ZoomFibre" },
+    { name: "Frogfoot" },
+    { name: "Thinkspeed" },
+    { name: "Vumatel" },
+    { name: "OpenServe" },
+    { name: "ClearAccess" },
+    { name: "Lightstruck" },
+    { name: "Frogfoot Air" },
+    { name: "TT Connect" },
+    { name: "Link Layer" },
+    { name: "MFN" },
+    { name: "Octotel" },
+    { name: "Vodacom" },
+  ];
+
   const range1 = 699;
   const range2 = 999;
   const range3 = 1000;
-
-  const allProducts = products.flatMap((a) => a);
 
   const filteredProductsBetweenRange1 = allProducts.filter(
     (a) => a.productRate > range1
@@ -53,8 +141,54 @@ const PriceRange = ({ products }) => {
     setShowFreeSetupCodes3((code) => !code);
   };
 
+  const handleClick = (providerName) => {
+    const filteredData = allProducts.filter(
+      (p) =>
+        p.subcategory.replace("Uncapped", "").replace("Capped", "").trim() ===
+        providerName
+    );
+    setTimeout(() => {
+      setSelectedProvider(filteredData);
+    }, 2000);
+  };
+
   return (
     <div>
+      {providers.map((provider) => {
+        return (
+          <button
+            key={uuidv4()}
+            name={provider.name}
+            onClick={(e) => handleClick(e.target.name)}
+          >
+            {provider.name}
+          </button>
+        );
+      })}
+      {selectedProvider !== null
+        ? selectedProvider.map((provider) => {
+            const matchedProvider = providerInfo.find(
+              (info) =>
+                info.name ===
+                provider.subcategory
+                  .replace("Uncapped", "")
+                  .replace("Capped", "")
+                  .trim()
+            );
+
+            return (
+              <ul key={uuidv4()}>
+                <li>{provider.productCode}</li>
+                <li>{provider.productName}</li>
+                <li>{provider.productRate}</li>
+                <li>{provider.provider}</li>
+                {matchedProvider && (
+                  <img src={matchedProvider.url} alt={matchedProvider.name} />
+                )}
+              </ul>
+            );
+          })
+        : ""}
       <nav>
         <ul className="labels-container">
           <div>
